@@ -1,0 +1,51 @@
+#!/usr/bin/python3
+
+"""
+Extract the XML payload from a .zip file that contains a signed Fattura
+Elettronica.
+"""
+
+import argparse
+import zipfile
+import subprocess
+
+def get_signed_payload(pathname):
+    """
+    Extract the signed XML payload from the Fattura Elettronica zip file at the
+    given pathname.
+
+    Return the bytes buffer with the raw data.
+    """
+    with zipfile.ZipFile(pathname) as src:
+        payloads = []
+        for f in src.infolist():
+            if f.filename.endswith(".xml.p7m"):
+                payloads.append(f)
+        if len(payloads) != 1:
+            raise RuntimeError("{} signed xml files found instead of 1".format(len(payloads)))
+
+        return src.read(payloads[0])
+
+def main():
+    parser = argparse.ArgumentParser(description="Extract the XML content of a Fattura Elettronica")
+    parser.add_argument("zipfile", help="the .zip file with the fattura elettronica")
+
+    args = parser.parse_args()
+
+    if not args.zipfile.endswith(".zip"):
+        raise RuntimeError("zipfile argument does not end with .zip")
+
+    signed_payload = get_signed_payload(args.zipfile)
+
+    raw_payload = subprocess.check_output(
+        ["openssl", "smime", "-decrypt", "-verify", "-inform", "DER", "-noverify"],
+        input=signed_payload,
+        stderr=subprocess.DEVNULL)
+
+    destfile = args.zipfile[:-4] + ".xml"
+    with open(destfile, "wb") as out:
+        out.write(raw_payload)
+
+if __name__ == "__main__":
+    main()
+
