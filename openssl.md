@@ -4,7 +4,7 @@
 
 To sign using the smart card, one uses `openssl smime`, but I could not find
 out how to have it [read a config file](http://opensc.1086184.n5.nabble.com/question-on-using-engine-pkcs11-with-openssl-smime-on-command-line-td13304.html)
-yet.
+yet. Let me know / send me a patch if you know a way.
 
 Using the openssl shell:
 
