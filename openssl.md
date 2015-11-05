@@ -26,7 +26,7 @@ I have clicked on "Sign" and choose manual signature.
 
 I have downloaded the zip file and extracted the xml file.
 
-I have signed it using the commands in the [Setting up OpenSSL to work with smart cards][] section.
+I have signed it using the commands in the *Setting up OpenSSL to work with smart cards* section above.
 
 I have uploaded the resulting p7m file.
 
