@@ -32,11 +32,9 @@ I have uploaded the resulting p7m file.
 
 Infocamere reported that the file was signed correctly.
 
-I have not tried sending the fattura elettronica to see if it would be
-accepted, because I have no customer to bill at the moment.
-
-If you have a chance, please try this out and let me know the outcome, ideally
-with a patch to this file.
+I have submitted the fattura elettronica and it has been successfully sent. I
+am now waiting to see if it gets accepted by the recipient, to complete the
+cycle.
 
 
 # Links
