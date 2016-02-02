@@ -32,9 +32,12 @@ I have uploaded the resulting p7m file.
 
 Infocamere reported that the file was signed correctly.
 
-I have submitted the fattura elettronica and it has been successfully sent. I
-am now waiting to see if it gets accepted by the recipient, to complete the
-cycle.
+I have submitted the fattura elettronica and it has been successfully sent.
+However, it has been rejected by the "Sistema di Interscambio" with error code
+00104 "CA (Certification Authority) non affidabile : Certification Authority
+non attendibile".
+
+Further attempts need to be made.
 
 
 # Links
